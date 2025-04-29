@@ -1,21 +1,25 @@
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, TextInput } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
+
 import { Text, View } from '@/components/Themed';
 
-import { UtgiftskategorierSectionList } from '@/components/Utgiftskategorier';
+//import { UtgiftskategorierSectionList } from '@/components/Utgiftskategorier';
+import { UtgiftskategorierFlatList } from '@/components/UtgiftskategorierFlatList';
+
 
 export default function TabOneScreen() {
   return (
+    
     <View style={styles.container}>
+      
       <Text style={styles.title}>Tab One</Text>
-      <Cat />
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-
-      <UtgiftskategorierSectionList />
+     
+      
+      <UtgiftskategorierFlatList />
 
     </View>
+    
   );
 }
 
@@ -30,7 +34,9 @@ export const Cat = () => {
         borderWidth: 1,
       }}
       defaultValue="Name you!"
+      
       />
+      
     </View>
   );
 };
