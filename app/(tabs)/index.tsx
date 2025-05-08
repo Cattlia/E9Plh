@@ -1,35 +1,33 @@
 import { StyleSheet, ScrollView, TextInput } from 'react-native';
-
-
 import { Text, View } from '@/components/Themed';
+import { ButtonVisBudsjett } from '@/components/ButtonVisBudsjett'
+import { useRouter } from 'expo-router';
 
-//import { UtgiftskategorierSectionList } from '@/components/Utgiftskategorier';
-import { UtgiftskategorierFlatList } from '@/components/UtgiftskategorierFlatList';
 
-
-export default function TabOneScreen() {
+export default function Budsjettappen() {
+  const navigation = useNavigation();
   return (
     
     <View style={styles.container}>
       
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Budsjettappen</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
      
+      <ButtonVisBudsjett navigation={navigation} />
       
-      <UtgiftskategorierFlatList />
 
     </View>
     
   );
 }
 
-export const Cat = () => {
+export const VisBudsjett = () => {
   return (
     <View>
-      <Text>Hello,jalla</Text>
+      <Text>Budsjettappen</Text>
       <TextInput
       style={{
-        height: 40,
+        height: 30,
         borderColor: 'gray',
         borderWidth: 1,
       }}
@@ -46,10 +44,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   title: {
-    fontSize: 20,
+    fontSize: 50,
     fontWeight: 'bold',
   },
   separator: {

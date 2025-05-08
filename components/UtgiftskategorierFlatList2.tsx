@@ -1,5 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
+import { ButtonBasics } from '@/components/ButtonBasics'
+
 
 const styles = StyleSheet.create({
     container: {
@@ -13,9 +15,10 @@ const styles = StyleSheet.create({
     },
 });
 
-export const UtgiftskategorierFlatList = () => {
+export const UtgiftskategorierFlatList2 = () => {
     return (
         <View style={styles.container}>
+            
             <FlatList
             data={[
                 {key: 'Mat og drikke'},
@@ -25,17 +28,15 @@ export const UtgiftskategorierFlatList = () => {
                 {key: 'Reisekostnader (til arbeid o.l)'},
                 {key: 'Spedbarnsutstyr'},
                 {key: 'Andre dagligvarer'},
-                {key: 'Husholdningsartikler'},
-                {key: 'Møbler'},
-                {key: 'Mediebruk og fritid'},
-                {key: 'Bilkostnader (drift og vedlikehold)'},
-                {key: 'Barnehage'},
-                {key: 'Skolefritidsordning (SFO)'},
+               
             ]}
             
+            
             renderItem={({item}) => <Text style={styles.item}>{item.key}
+            
 </Text>}
       />
+      
     </View>
     );
 };
@@ -73,4 +74,11 @@ tobakk
 alkohol
 gaver
 helsetjenester
+
+ {key: 'Husholdningsartikler'},
+                {key: 'Møbler'},
+                {key: 'Mediebruk og fritid'},
+                {key: 'Bilkostnader (drift og vedlikehold)'},
+                {key: 'Barnehage'},
+                {key: 'Skolefritidsordning (SFO)'},
 */
