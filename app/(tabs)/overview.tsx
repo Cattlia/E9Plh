@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { ButtonShowBudget } from '@/components/ButtonShowBudget';
 
 const FlexStartExample = () => {
   return (
@@ -7,6 +8,7 @@ const FlexStartExample = () => {
       <Text style={styles.item}>Oversikt</Text>
       <Text style={styles.item}>Oversikt</Text>
       <Text style={styles.item}>Oversikt</Text>
+      <ButtonShowBudget destination="index" />
     </View>
   );
 };

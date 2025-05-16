@@ -1,24 +1,25 @@
 
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import { NavigationProp } from '@react-navigation/native';
+import { Button, StyleSheet, View } from 'react-native';
+import { useRouter, Router } from 'expo-router';
+import { ROUTES, Destination, RoutePath } from 'src/routes';
 
 type Props = {
-    navigation: NavigationProp<any>;
+    destination: Destination;
 };
 
-export const ButtonVisBudsjett = ({ navigation }: Props) => {
+export const ButtonShowBudget = ({ destination }: Props) => {
+  const router = useRouter();
   const onPress = () => {
-   navigation.navigate('oversikt') ;
+    router.push(ROUTES[destination] as RoutePath);
   };
 
+
   return (
-    <View style={styles.container}>
-      
+    <View style={styles.container}>      
       <View style={styles.buttonContainer}>
         <Button onPress={onPress} title="Vis budsjett" color="rgb(20, 110, 170)" />
-      </View>
-      
+      </View>      
     </View>
   );
 };

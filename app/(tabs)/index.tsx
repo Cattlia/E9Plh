@@ -1,21 +1,18 @@
 import { StyleSheet, ScrollView, TextInput } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { ButtonVisBudsjett } from '@/components/ButtonVisBudsjett'
+import { ButtonShowBudget } from '@/components/ButtonShowBudget'
 import { useRouter } from 'expo-router';
 
 
 export default function Budsjettappen() {
-  const navigation = useNavigation();
-  return (
+    return (
     
-    <View style={styles.container}>
-      
+    <View style={styles.container}>      
       <Text style={styles.title}>Budsjettappen</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
      
-      <ButtonVisBudsjett navigation={navigation} />
+      <ButtonShowBudget destination="overview" />
       
-
     </View>
     
   );

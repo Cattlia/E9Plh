@@ -1,4 +1,4 @@
-import { RootParamList } from './app/routes';
+import { RootParamList } from './src/routes';
 
 declare module 'expo-router' {
   interface RouterContext {
