@@ -1,10 +1,13 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "allowJs": true,
+    "skipLibCheck": true,
+    "types": ["expo-sqlite", "expo-asset"],
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["app/*"],
+      "@/*": ["src/*"],
       "@/components/*": ["components/*"],
       "@/constants/*": ["constants/*"]
     }
@@ -13,6 +16,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "src/**/*",
+    "src/types"
   ]
 }

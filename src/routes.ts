@@ -10,19 +10,21 @@ Optionally include parameter types if your routes accept parameters. */
 export type RootParamList = {
     index: undefined;
     overview: undefined;
-    
-    
+    sifoawtext:undefined;
+    sifoflatlist:undefined;
 };
 
 export const ROUTES = {
     index: '/' as const,
     overview: '/overview' as const,
+    sifoawtext: '/sifoawtext' as const,
+    sifoflatlist: '/sifoflatlist' as const,
     
     
 };
 
 export type Destination = keyof typeof ROUTES; 
-export type RoutePath = '/' | '/overview';
+export type RoutePath = '/' | '/overview' | 'sifoawtext' | '/sifoflatlist';
 
 
 

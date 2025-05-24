@@ -5,10 +5,11 @@ import { useRouter, Router } from 'expo-router';
 import { ROUTES, Destination, RoutePath } from 'src/routes';
 
 type Props = {
-    destination: Destination;
+    destination: keyof typeof ROUTES;
+    title?: string;
 };
 
-export const ButtonShowBudget = ({ destination }: Props) => {
+export const ButtonShowBudget = ({ destination, title = "Vis budsjett"}: Props) => {
   const router = useRouter();
   const onPress = () => {
     router.push(ROUTES[destination] as RoutePath);
@@ -18,7 +19,7 @@ export const ButtonShowBudget = ({ destination }: Props) => {
   return (
     <View style={styles.container}>      
       <View style={styles.buttonContainer}>
-        <Button onPress={onPress} title="Vis budsjett" color="rgb(20, 110, 170)" />
+        <Button onPress={onPress} title={title} color="rgb(20, 110, 170)" />
       </View>      
     </View>
   );

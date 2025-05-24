@@ -11,12 +11,25 @@ export default function Budsjettappen() {
       <Text style={styles.title}>Budsjettappen</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
      
-      <ButtonShowBudget destination="overview" />
+      <ButtonShowBudget title="Vis budsjett" destination="overview" />
+      <ButtonShowBudget title="sifo" destination="sifoflatlist" />
       
     </View>
     
   );
 }
+
+//sqlite/api start
+
+
+
+
+
+
+//sqlite/api slutt
+
+
+
 
 export const VisBudsjett = () => {
   return (

@@ -1,24 +1,67 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { useSQLiteContext } from 'expo-sqlite';
 
-const FlexStartExample = () => {
+export default function Page3() {
+  const db = useSQLiteContext();
+  const [tableNames, setTableNames] = useState<string[]>([]);
+
+  // Get table names
+  useEffect(() => {
+    async function fetchTables() {
+      const result = await db.getAllAsync<{ name: string }>(
+        "SELECT name FROM sqlite_master WHERE type='table';"
+      );
+      setTableNames(result.map((row) => row.name));
+    }
+
+    fetchTables();
+  }, []);
+
+  // Log row counts
+  useEffect(() => {
+    async function logTableCounts() {
+      const targetTables = ['husholdningsutgifter', 'individutgifter', 'barnehagekostnader', 'spedbarnsutstyr'];
+
+      for (const table of targetTables) {
+        try {
+          const [{ count }] = await db.getAllAsync<{ count: number }>(
+            `SELECT COUNT(*) as count FROM ${table};`
+          );
+          console.log(`${table}: ${count} rows`);
+        } catch (e) {
+          console.warn(`Could not count rows for ${table}:`, e);
+        }
+      }
+    }
+
+    logTableCounts();
+  }, [db]);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.item}>Short</Text>
-      <Text style={styles.item}>Medium length text</Text>
-      <Text style={styles.item}>A very long piece of text that spans multiple lines</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.heading}>Tables in Database</Text>
+      {tableNames.map((tableName, index) => (
+        <Text key={index} style={styles.tableName}>
+          {tableName}
+        </Text>
+      ))}
+    </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'baseline', // Aligns items to the start of the container's cross axis
+    padding: 24,
+    backgroundColor: '#fff',
   },
-  item: {
-    margin: 10,
+  heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 12,
+  },
+  tableName: {
+    fontSize: 16,
+    marginBottom: 8,
   },
 });
-
-export default FlexStartExample;
